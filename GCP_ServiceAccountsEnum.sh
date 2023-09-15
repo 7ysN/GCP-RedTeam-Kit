@@ -41,7 +41,7 @@ echo "\e[1;33mCustom Roles Describe: \e[0m"
 for serviceAccount in $(cat ServiceAccounts.txt); 
 	do
     		echo "\e[1;36m[+] $serviceAccount \e[0m"
-    		gcloud projects get-iam-policy cgcrts-staging --flatten="bindings[].members" --filter="bindings.members=serviceaccount:$serviceAccount" --format="value(bindings.role)"
+    		gcloud projects get-iam-policy $project --flatten="bindings[].members" --filter="bindings.members=serviceaccount:$serviceAccount" --format="value(bindings.role)"
 	done | grep -v "[+]" | awk -F/ '{print $NF}'| sort | uniq > CustomRoles.txt
 
 for CRole in $(cat CustomRoles.txt); 
