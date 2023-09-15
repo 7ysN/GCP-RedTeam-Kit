@@ -16,7 +16,7 @@ for currentUser in $(cat CurrentUsername.txt);
 		echo "\e[0;36m[+] Current Username: \e[1;32m$currentUser \e[0m"; 
 	done
 
-# List all Service Account
+# List all Service Accounts
 echo " "
 echo "\e[1;33mService Accounts: \e[0m"
 gcloud iam service-accounts list --project $project |grep -oE '[[:alnum:].+-]+@[[:alnum:].+-]+' | tee ServiceAccounts.txt
@@ -46,11 +46,11 @@ for serviceAccount in $(cat ServiceAccounts.txt);
 
 for CRole in $(cat CustomRoles.txt); 
 	do
-    		gcloud iam roles describe $CRole --project cgcrts-staging 2>/dev/null
+    		gcloud iam roles describe $CRole --project $project 2>/dev/null
     		echo " "
 	done
 
-# Enumerate Permissions on specific Service Accounts
+# Enumerate Permissions of specific Service Accounts
 echo "\e[1;33mIAM Service Accounts Policies: \e[0m"
 for serviceAccount in $(cat ServiceAccounts.txt); 
 	do 
