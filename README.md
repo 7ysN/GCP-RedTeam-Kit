@@ -1,2 +1,2 @@
-# GCP-RedTeam-Kit
-Red Team Kit for Google Cloud Platform
+# Google Cloud Platform Red Team Kit
+
