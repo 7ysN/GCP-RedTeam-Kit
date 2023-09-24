@@ -7,5 +7,6 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - 
 sudo apt update 2>/dev/null &&
 sudo apt install google-cloud-cli -y 2>/dev/null &&
 chmod +x ./GCP_ServiceAccountsEnum.sh 2>/dev/null &&
-chmod +x ./GCP_ComputeInstancesEnum.sh 2>/dev/null
+chmod +x ./GCP_ComputeInstancesEnum.sh 2>/dev/null &&
+clear &&
 echo "\e[1;36m[+] Type \e[1;33m'gcloud version' \e[1;36mto verify gcloud is installed\e[0m"
