@@ -13,7 +13,7 @@
 - [gcloud cli](https://cloud.google.com/sdk/docs/install#deb)
 - jq
 
-##### I've added a `setup.sh` file to install all the necessary dependencies.
+##### I've added a [`setup.sh`](https://github.com/YuvalSab/GCP-RedTeam-Kit/blob/main/setup.sh) file to install all the necessary dependencies.
 ### Installation:
 1. `$ git clone https://github.com/YuvalSab/GCP-RedTeam-Kit.git`
 2. `$ cd GCP-RedTeam-Kit` 
