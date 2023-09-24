@@ -15,7 +15,6 @@ for currentUser in $(cat CurrentUsername.txt);
 	do 
 		echo "\e[0;36m[+] Current Username: \e[1;32m$currentUser \e[0m"; 
 	done
-
 # List all Compute Instances in the Project
 gcloud compute instances list --project $project --format="table[box,title='Compute Instances'](NAME,ZONE,INTERNAL_IP,EXTERNAL_IP,STATUS)"
 
@@ -23,10 +22,8 @@ gcloud compute instances list --project $project --format="table[box,title='Comp
 echo "\n\e[1;33mSelect a Compute Instance to inspect:\e[0m"
 gcloud compute instances list --project $project --format="table[no-heading](name,zone)"  2>/dev/null | awk '{print $1}' | nl
 read -p "Enter The Number of The Instance You Want To Inspect: " selected_instance_num
-
 instance_name=$(gcloud compute instances list --project $project --format="table[no-heading](name,zone)" | awk -v num="$selected_instance_num" 'NR==num {print $1}')
 zone=$(gcloud compute instances list --project $project --format="table[no-heading](name,zone)" | awk -v num="$selected_instance_num" 'NR==num {print $2}')
-
 if [ -z "$instance_name" ]; then
   echo "\e[0;31m[-] Invalid Choise. \e[0m"
   exit 1
@@ -40,7 +37,6 @@ gcloud compute instances get-iam-policy "$instance_name" --zone "$zone" --projec
 	
 # Compute Instaces Describe - Check for SSH Private Keys
 echo " "
-
 echo "\e[1;33mCompute Instances Information \e[1;31m(Check for PRIVATE SSH Keys!)\e[1;33m: \e[0m"
 echo "\e[1;36m[+] $instance_name:\e[0m"
 gcloud compute instances describe $instance_name --zone $zone --project $project --format=json | jq -r '{
@@ -49,7 +45,6 @@ gcloud compute instances describe $instance_name --zone $zone --project $project
 "Internal IP Address": .networkInterfaces[0].networkIP,
 "Attached Service Account": .serviceAccounts[0].email,
 "Tags": .tags.items}'
-
 gcloud compute instances describe $instance_name --zone $zone --project $project --format=json | jq -r '.metadata.items[] | select(.key == "private-ssh-key") | .value' 2>/dev/null
 
 # Append the private key to Private_Key.ssh
@@ -75,10 +70,8 @@ gcloud compute project-info describe --project $project --format=json | jq -r '{
   "Creation Timestamp": .creationTimestamp,
   "Default Service Account": .defaultServiceAccount,
   "Project Name": .name
-}' 2>/dev/null
-
+   }' 2>/dev/null
 public_keys=$(gcloud compute project-info describe --project $project --format=json | jq -r '.commonInstanceMetadata.items[] | select(.key == "ssh-keys") | .value' 2>/dev/null)
-
 if [ "$public_keys" == "null" ] 2>/dev/null; then 
   echo " "
   echo "\e[0;31m[-] No Public Keys were found. \e[0m"
