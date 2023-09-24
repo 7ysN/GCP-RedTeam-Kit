@@ -9,4 +9,4 @@ sudo apt install google-cloud-cli -y 2>/dev/null &&
 chmod +x ./GCP_ServiceAccountsEnum.sh 2>/dev/null &&
 chmod +x ./GCP_ComputeInstancesEnum.sh 2>/dev/null &&
 clear ;
-echo "\e[1;36m[+] Type \e[1;33m'gcloud version' \e[1;36mto verify gcloud is installed\e[0m"
+echo "\e[1;36m[+] Type \e[1;33m'gcloud version' \e[1;36mto verify gcloud has installed\e[0m"
