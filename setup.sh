@@ -1,4 +1,4 @@
-echo "\e[5;32mRunning Setup... \e[0m"
+echo "\e[5;32m[+] Running Setup: \e[0m"
 sudo apt update  2>/dev/null &&
 sudo apt install jq -y 2>/dev/null &&
 sudo apt install apt-transport-https ca-certificates gnupg curl sudo -y 2>/dev/null &&
@@ -8,5 +8,4 @@ sudo apt update 2>/dev/null &&
 sudo apt install google-cloud-cli -y 2>/dev/null &&
 chmod +x ./GCP_ServiceAccountsEnum.sh 2>/dev/null &&
 chmod +x ./GCP_ComputeInstancesEnum.sh 2>/dev/null &&
-clear ;
 echo "\e[1;36m[+] Type \e[1;33m'gcloud version' \e[1;36mto verify gcloud has installed\e[0m"
