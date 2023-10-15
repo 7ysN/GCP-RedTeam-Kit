@@ -1,10 +1,3 @@
-					######################################
-					##  GCP Red Team Enumeration Kit    ##
-					##  Subject: Service Accounts	    ##
-					##  Auditor: Yuval Saban	    ##					
-					######################################
-
-
 # Set The Project Name
 echo -n "\e[5;31m[!] Enter Project Name: \e[0m"
 read project
